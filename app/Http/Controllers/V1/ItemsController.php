@@ -53,10 +53,23 @@ class ItemsController extends Controller
             throw new DataNotFoundException('Data Not Found');
         }
 
+        $list =[];
+        foreach($result as $dt) {
+            $amount =  number_format($dt->qty * $dt->unit_price, 2);
+
+            $item['item_name'] = $dt->item_name;
+            $item['type'] = $dt->type;
+            $item['qty'] = $dt->qty;
+            $item['unit_price'] = $dt->unit_price;
+            $item['amount'] =  $amount;
+            $list[] = $item;
+        };
+
+
 
         $this->output->responseCode = '00';
         $this->output->responseDesc = 'Success Inquiry Items';
-        $this->output->responseData = $result;
+        $this->output->responseData = $list;
         return response()->json($this->output);
     }
 
