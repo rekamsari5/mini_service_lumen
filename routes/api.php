@@ -30,3 +30,9 @@ $router->group(['prefix' => 'items/v1', 'namespace' => 'V1'], function () use ($
     $router->post('/updateItems', 'ItemsController@updateitems');
     $router->post('/deleteItems', 'ItemsController@deleteitems');
 });
+
+$router->group(['prefix' => 'invoice/v1', 'namespace' => 'V1'], function () use ($router) {
+    $router->post('/inquiryInvoice', 'InvoiceController@inquiryinvoice');
+    $router->post('/createInvoice', 'InvoiceController@createinvoice');
+    $router->post('/updateInvoice', 'InvoiceController@updateinvoice');
+});

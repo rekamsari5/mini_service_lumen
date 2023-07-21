@@ -12,7 +12,7 @@ class CustomerRepository
     {
 
         $query = DB::table('tbl_customer')
-            ->select('name')
+            ->select('*')
             ->where(function($sub_query) use ($filter) {
                 if (isset($filter['name'])) {
                     $sub_query->where('name', 'like', '%' . $filter['name'] . '%');

@@ -4,12 +4,36 @@ CREATE TABLE tbl_items (
     type VARCHAR(255),
     qty DECIMAL(10,2),
     unit_price DECIMAL(10,2)
-
 );
 
 CREATE TABLE tbl_customer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255)
+);
+
+CREATE TABLE invoices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject VARCHAR(255),
+    issue_date DATE,
+    due_date DATE,
+    customer_id INT,
+    address TEXT,
+    total_item INT,
+    status VARCHAR(50),
+    subTotal DECIMAL(10, 2),
+    taxAmount DECIMAL(10, 2),
+    grandTotal DECIMAL(10, 2)
+);
+
+
+CREATE TABLE tbl_user_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT
+    item_name VARCHAR(255),
+    type VARCHAR(255),
+    qty DECIMAL(10,2),
+    unit_price DECIMAL(10,2)
+    amount DECIMAL(10,2)
 );
 
 
