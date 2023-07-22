@@ -55,8 +55,7 @@ class ItemsController extends Controller
 
         $list =[];
         foreach($result as $dt) {
-            $amount =  number_format($dt->qty * $dt->unit_price, 2);
-
+            $amount =  round($dt->qty * $dt->unit_price, 2);
             $item['item_name'] = $dt->item_name;
             $item['type'] = $dt->type;
             $item['qty'] = $dt->qty;

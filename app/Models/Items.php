@@ -13,8 +13,8 @@ class Items extends Model
     protected $casts = [
         'item' => 'string',
         'type' => 'string',
-        'qty' => 'string',
-        'unit_price' => 'string',
+        'qty' => 'float',
+        'unit_price' => 'float',
     ];
 
     /**

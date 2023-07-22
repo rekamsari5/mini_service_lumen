@@ -3,14 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Collections\CustomerCollection;
+use App\Collections\InvoiceCollection;
 
 class Invoice extends Model
 {
     public $timestamps = false;
 
     protected $fillable = [];
-    protected $casts = [];
+    protected $casts = [
+        'qty' => 'float',
+        'unit_price' => 'float',
+        'amount' => 'float',
+        'subTotal' => 'float',
+        'taxAmount' => 'float',
+        'grandTotal' => 'float'
+    ];
 
     /**
      * Create a new Eloquent Collection instance.
@@ -20,6 +27,6 @@ class Invoice extends Model
      */
     public function newCollection(array $models = [])
     {
-        return new CustomerCollection($models);
+        return new InvoiceCollection($models);
     }
 }

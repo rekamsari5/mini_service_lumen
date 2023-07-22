@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "7c071c05-e255-47fd-ae34-d933aec79174",
+		"name": "Invoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6713892"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "inquiryCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/v1/inquiryCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"v1",
+								"inquiryCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Company name3\",\n    \"address\":\"panongan, kab tangerang\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/v1/createCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"v1",
+								"createCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\" : 1,\n    \"name\":\"Company name\",\n    \"address\":\"sukapura, jakarta utara\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/v1/updateCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"v1",
+								"updateCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/v1/deleteCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"v1",
+								"deleteCustomer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "inquiryItems",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item_name\":\"\",\n    \"type\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/items/v1/inquiryItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"items",
+								"v1",
+								"inquiryItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createItems",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item_name\":\"Monitor4\",\n    \"type\":\"Hardware\",\n    \"qty\": 7.3,\n    \"unit_price\": 83.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/items/v1/createItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"items",
+								"v1",
+								"createItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateItems",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\" : 8,\n    \"item_name\":\"Monitor3\",\n    \"type\":\"Hardware\",\n    \"qty\": 7.3,\n    \"unit_price\": 99\n}\n\n//jika melakukan update tanpa ada perubahan dinilai error",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/items/v1/updateItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"items",
+								"v1",
+								"updateItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteItems",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\" : 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/items/v1/deleteItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"items",
+								"v1",
+								"deleteItems"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "createInvoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"subject\":\"Marketing Campaign User 2\",\n    \"issue_date\":\"2023-07-22\",\n    \"due_date\":\"2023-07-23\",\n    \"customer_id\": 2,\n    \"list_item\" : [\n        {\n            \"item_name\": \"Meeting\",\n            \"type\": \"Service\",\n            \"qty\": 4.5,\n            \"unit_price\": 60,\n            \"amount\": 270\n        },\n        {\n            \"item_name\": \"Printer\",\n            \"type\": \"Hardware\",\n            \"qty\": 4.2,\n            \"unit_price\": 70,\n            \"amount\": 294\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoice/v1/createInvoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoice",
+								"v1",
+								"createInvoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateInvoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"invoiceId\": \"00001\",\n  \"subject\":\"Marketing Campaign 3\",\n    \"issue_date\":\"2023-07-22\",\n    \"due_date\":\"2023-07-23\",\n    \"customer_id\": 3,\n  \"list_items\": [\n                {\n                    \"id\": 1,\n                    \"invoiceId\": \"00001\",\n                    \"item_name\": \"Meeting\",\n                    \"type\": \"Service\",\n                    \"qty\": 4.5,\n                    \"unit_price\": 60,\n                    \"amount\": 270\n                },\n                {\n                    \"id\": 3,\n                    \"invoiceId\": \"00001\",\n                    \"item_name\": \"Printer\",\n                    \"type\": \"Hardware\",\n                    \"qty\": 4.2,\n                    \"unit_price\": 70,\n                    \"amount\": 294\n                }\n            ],\n  \"new_list_items\": [ //jika tidak ada yang harus di tambah boleh dengan array kosong\n    //   {\n    //         \"item_name\": \"Design\",\n    //         \"type\": \"Service\",\n    //         \"qty\": 41,\n    //         \"unit_price\": 230,\n    //         \"amount\": 9430\n    //     }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoice/v1/updateInvoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoice",
+								"v1",
+								"updateInvoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inquiryInvoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"invoice_id\"   : \"\",\n    \"issue_date\": \"\",\n    \"subject\"   : \"\",\n    \"total_item\":\"\",\n    \"customer\": \"\",\n    \"due_date\": \"\",\n    \"status\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoice/v1/inquiryInvoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoice",
+								"v1",
+								"inquiryInvoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inquiryDetail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoice/v1/inquiryDetail/00002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoice",
+								"v1",
+								"inquiryDetail",
+								"00002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

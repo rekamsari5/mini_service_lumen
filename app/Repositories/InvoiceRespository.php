@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use App\Models\Invoice;
+use Illuminate\Support\Facades\DB;
 use App\Collections\InvoiceCollection;
 
 class InvoiceRespository
@@ -26,7 +27,6 @@ class InvoiceRespository
             'issue_date' => $request['issue_date'],
             'due_date' => $request['due_date'],
             'customer_id' => $request['customer_id'],
-            'address' => $request['address'],
             'total_item' => $request['total_item'],
             'status' => $request['status'],
             'subTotal' => $request['subTotal'],
@@ -36,30 +36,30 @@ class InvoiceRespository
 
         $query = DB::table('invoices')->insert($insertData);
 
-        return $query;
+        $queryIdNew = DB::table('invoices')->orderByDesc('id')->first();
+
+        return $queryIdNew->{'id'};
     }
 
 
-    public function insertUserItem($customer, $req_item)
+    public function insertUserItem($invoiceId, $req_item)
     {
         $queryResults = [];
         foreach($req_item as $v){
-            $qty = (float) str_replace(',', '', $v['qty']);
-            $unit_price = (float) str_replace(',', '', $v['unit_price']);
-            $amount = (float) str_replace(',', '', $v['amount']);
-
             $insertData = [
-                'customer_id' => $customer,
+                'invoiceId' => $invoiceId,
                 'item_name' => $v['item_name'],
                 'type' => $v['type'],
-                'qty' => $qty,
-                'unit_price' => $unit_price,
-                'amount' =>  $amount
+                'qty' => $v['qty'],
+                'unit_price' => $v['unit_price'],
+                'amount' =>  $v['amount']
             ];
+            $queryResults[] =  $insertData;
 
-            $queryResults[] = DB::table('tbl_user_items')->insert( $insertData );
         }
-        return $queryResults;
+
+        $query = DB::table('tbl_user_items')->insert( $queryResults );
+        return $query;
     }
 
 
@@ -88,12 +88,56 @@ class InvoiceRespository
         return $result;
     }
 
-    public function getUserItems($request) {
+    public function getInvoiceDetail($invoiceId) {
+        $query = DB::table('invoices AS i')
+                    ->select('i.*','i.id as invoiceId', 'b.name AS customer_name', 'b.address')
+                    ->leftJoin('tbl_customer AS b','b.id','=','i.customer_id')
+                    ->where("i.id", $invoiceId)
+                    ->get()->toArray();
+        $result = Invoice::hydrate($query);
+
+        return $result ;
+    }
+
+    public function getUserItems($invoiceId) {
         $query = DB::table('tbl_user_items')
                     ->select('*')
-                    ->where("customer_id", $request)
-                    ->get();
+                    ->where("invoiceId", $invoiceId);
 
+        $list = Invoice::hydrate($query->get()->toArray());
+
+        return $list;
+    }
+
+
+    public function updateInvoice($request) {
+
+        $dt = [
+            'subject' => $request['subject'],
+            'issue_date' => $request['issue_date'],
+            'due_date' => $request['due_date'],
+            'customer_id' => $request['customer_id'],
+            'total_item' => $request['total_item'],
+            'subTotal' => $request['subTotal'],
+            'taxAmount' => $request['taxAmount'],
+            'grandTotal' => $request['grandTotal'],
+            'updated_at' => Carbon::now()->format("Y-m-d H:i:s")
+        ];
+
+        $query = DB::table('invoices')
+                ->where('id', $request['id'])
+                ->update($dt);
+        return $query;
+
+    }
+
+
+    public function deleteLastItems($deleteId, $invoiceId)
+    {
+        $query = DB::table('tbl_user_items')
+                ->whereIn('id', $deleteId)
+                ->where('invoiceId', $invoiceId)
+                ->delete();
         return $query;
     }
 

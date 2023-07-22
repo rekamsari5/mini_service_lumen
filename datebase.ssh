@@ -1,0 +1,55 @@
+-- service_invoice.invoices definition
+
+CREATE TABLE `invoices` (
+  `id` varchar(8) NOT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `issue_date` date DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
+  `total_item` int DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `subTotal` decimal(10,2) DEFAULT NULL,
+  `taxAmount` decimal(10,2) DEFAULT NULL,
+  `grandTotal` decimal(10,2) DEFAULT NULL,
+  `createdDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- service_invoice.tbl_customer definition
+
+CREATE TABLE `tbl_customer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `address` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- service_invoice.tbl_items definition
+
+CREATE TABLE `tbl_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `item_name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `qty` decimal(10,2) DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- service_invoice.tbl_user_items definition
+
+CREATE TABLE `tbl_user_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `invoiceId` varchar(8) DEFAULT NULL,
+  `item_name` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `qty` decimal(10,2) DEFAULT NULL,
+  `unit_price` decimal(10,2) DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `invoiceId_index` (`invoiceId`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
