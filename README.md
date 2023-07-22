@@ -1,3 +1,18 @@
+## Getting Started
+- You must using  PHP Version  7.3 or 8
+- You must have been composer install.
+- You must run php -S localhost:8000 -t public
+- Database using mysql
+
+## Notes
+- There is already a postman
+- There are already database records that must be created
+- The app has a menu:
+        - Customers: get list & filter, insert, update, delete,
+        - Items: get list & filter, insert, update delete,
+        - Invoice: get list & filter, insert, update
+
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
