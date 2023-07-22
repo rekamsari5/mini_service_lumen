@@ -26,16 +26,19 @@ class CustomerRepository
     public function createCustomer($request) {
         $query = DB::table('tbl_customer')
                 ->insert([
-                    'name' => $request
+                    'name' => $request['name'],
+                    'address' => $request['address']
+
                 ]);
         return $query;
     }
 
     public function updateCustomer($request) {
         $query = DB::table('tbl_customer')
-                ->where("id", $request['id'])
+                ->where('id', $request['id'])
                 ->update([
-                    "name" => $request['name']
+                    'name' => $request['name'],
+                    'address' => $request['address']
                 ]);
 
         return $query;

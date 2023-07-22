@@ -64,6 +64,7 @@ class CustomerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
+            'address' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +72,12 @@ class CustomerController extends Controller
             throw new ParameterException($error_massage);
         }
 
-        $result= $this->customerRepository->createCustomer($request->name);
+        $request = [
+            "name" => $request->name,
+            "address" => $request->address
+        ];
+
+        $result= $this->customerRepository->createCustomer($request);
         if($result == false){
             throw new FailedDataException('Failed to insert data');
         }
@@ -92,6 +98,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required|numeric',
             'name' => 'required|string',
+            'address' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -101,7 +108,8 @@ class CustomerController extends Controller
 
         $request = [
             "id" => $request->id,
-            "name" => $request->name
+            "name" => $request->name,
+            "address" => $request->address
         ];
 
         $result= $this->customerRepository->updateCustomer($request);
