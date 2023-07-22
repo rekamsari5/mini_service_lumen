@@ -7,10 +7,10 @@
 ## Notes
 - There is already a postman
 - There are already database records that must be created
-- The app has a menu:
-        - Customers: get list & filter, insert, update, delete,
-        - Items: get list & filter, insert, update delete,
-        - Invoice: get list & filter, insert, update
+- The app has a menu: \
+        - Customers: get list & filter, insert, update, delete, \
+        - Items: get list & filter, insert, update delete, \
+        - Invoice: get list & filter, insert, update \
 
 
 # Lumen PHP Framework
