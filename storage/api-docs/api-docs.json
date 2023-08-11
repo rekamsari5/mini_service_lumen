@@ -1,0 +1,237 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Docs APP ",
+        "description": "Open API Documentation",
+        "termsOfService": "http://swagger.io/terms/",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/customer/v1/inquiryCustomer": {
+            "post": {
+                "tags": [
+                    "API Reporting"
+                ],
+                "description": "Get inquiryCustomer",
+                "operationId": "/customer/v1/inquiryCustomer",
+                "requestBody": {
+                    "description": "Get inquiryCustomer",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "examples": {
+                                "request": {
+                                    "summary": "Request",
+                                    "value": {
+                                        "name": "test"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "result": {
+                                        "summary": "Response",
+                                        "value": {
+                                            "responseCode": "00",
+                                            "responseDesc": "Success",
+                                            "responseData": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "ramayana",
+                                                    "address": "test"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/v1/createCustomer": {
+            "post": {
+                "tags": [
+                    "API Reporting"
+                ],
+                "description": "createCustomer",
+                "operationId": "/customer/v1/createCustomer",
+                "requestBody": {
+                    "description": "createCustomer",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "examples": {
+                                "request": {
+                                    "summary": "Request",
+                                    "value": {
+                                        "name": "test",
+                                        "address": "test"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "result": {
+                                        "summary": "Response",
+                                        "value": {
+                                            "responseCode": "00",
+                                            "responseDesc": "Success Insert Data",
+                                            "responseMessage": "Success"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/v1/updateCustomer": {
+            "post": {
+                "tags": [
+                    "API Reporting"
+                ],
+                "description": "updateCustomer",
+                "operationId": "/customer/v1/updateCustomer",
+                "requestBody": {
+                    "description": "updateCustomer",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "examples": {
+                                "request": {
+                                    "summary": "Request",
+                                    "value": {
+                                        "id": 1,
+                                        "name": "coba",
+                                        "address": "jakarta"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "result": {
+                                        "summary": "Response",
+                                        "value": {
+                                            "responseCode": "00",
+                                            "responseDesc": "Success Update Data",
+                                            "responseMessage": "Success"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/v1/deleteCustomer": {
+            "post": {
+                "tags": [
+                    "API Reporting"
+                ],
+                "description": "deleteCustomer",
+                "operationId": "/customer/v1/deleteCustomer",
+                "requestBody": {
+                    "description": "deleteCustomer",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "examples": {
+                                "request": {
+                                    "summary": "Request",
+                                    "value": {
+                                        "id": 4
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "result": {
+                                        "summary": "Response",
+                                        "value": {
+                                            "responseCode": "00",
+                                            "responseDesc": "Success Delete Data",
+                                            "responseMessage": "Success"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
