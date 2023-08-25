@@ -19,6 +19,7 @@ class CustomerRepository
                     $sub_query->where('name', 'like', '%' . $filter['name'] . '%');
                 }
             })
+            ->orderby('id', 'desc')
             ->get();
 
         return $query;
