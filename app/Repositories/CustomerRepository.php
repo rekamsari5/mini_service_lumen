@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
+use DateTime;
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 use App\Collections\CustomerCollection;
 
 class CustomerRepository
@@ -34,11 +35,13 @@ class CustomerRepository
     }
 
     public function updateCustomer($request) {
+        $update = new DateTime('now');
         $query = DB::table('tbl_customer')
                 ->where('id', $request['id'])
                 ->update([
                     'name' => $request['name'],
-                    'address' => $request['address']
+                    'address' => $request['address'],
+                    'updated_at' => $update
                 ]);
 
         return $query;
